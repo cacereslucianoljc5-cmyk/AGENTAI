@@ -200,6 +200,14 @@ a {
   font-size: 40px;
   margin-bottom: 10px;
 }
+.welcome-img {
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+  margin: 0 auto 14px;
+  display: block;
+  filter: drop-shadow(0 0 22px rgba(163, 230, 53, 0.35));
+}
 .bubble {
   max-width: 82%;
   padding: 12px 15px;

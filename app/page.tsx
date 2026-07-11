@@ -9,6 +9,13 @@ type Ratio = "square" | "landscape" | "portrait";
 const CHAT_LIMIT = 40;
 const IMAGE_LIMIT = 20;
 
+// Brand images served from the public GitHub repo via jsDelivr CDN, pinned to a
+// commit so they load on the live site even before a git-connected deploy.
+// When the project is connected to Git on Vercel, these can be swapped back to
+// local paths ("/mascot.png", etc.).
+const CDN =
+  "https://cdn.jsdelivr.net/gh/cacereslucianoljc5-cmyk/AGENTAI@7623a38b363ed108a4047f4fe553aaba5aa80d13/public";
+
 function todayKey() {
   return new Date().toISOString().slice(0, 10);
 }
@@ -61,7 +68,7 @@ function Mascot() {
     // eslint-disable-next-line @next/next/no-img-element
     <img
       className="mascot"
-      src="/mascot.png"
+      src={`${CDN}/mascot.png`}
       alt="HoodAgent"
       onError={() => setBroken(true)}
     />
@@ -88,7 +95,7 @@ function Wordmark() {
     // eslint-disable-next-line @next/next/no-img-element
     <img
       className="wordmark-img"
-      src="/wordmark.jpg"
+      src={`${CDN}/wordmark.jpg`}
       alt="HoodAgent — Your AI. Your Edge."
       onError={() => setBroken(true)}
     />
@@ -163,7 +170,8 @@ function ChatTab() {
       <div className="chat-log" ref={logRef}>
         {messages.length === 0 && !loading && (
           <div className="empty-state">
-            <div className="big">🤖</div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img className="welcome-img" src={`${CDN}/mascot-welcome.png`} alt="HoodAgent" />
             Pregúntame lo que quieras. Soy <b>HoodAgent</b>.
           </div>
         )}
