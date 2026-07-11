@@ -68,22 +68,38 @@ function Mascot() {
   );
 }
 
+function Wordmark() {
+  const [broken, setBroken] = useState(false);
+  if (broken) {
+    return (
+      <div>
+        <div className="wordmark">
+          <span className="hood">Hood</span>
+          <span className="agent">Agent</span>
+          <span className="ai">Ai</span>
+        </div>
+        <div className="tagline">
+          Your <b>AI</b>. Your <b>Edge</b>.
+        </div>
+      </div>
+    );
+  }
+  return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      className="wordmark-img"
+      src="/wordmark.jpg"
+      alt="HoodAgent — Your AI. Your Edge."
+      onError={() => setBroken(true)}
+    />
+  );
+}
+
 function Header() {
   return (
     <header className="header">
-      <div className="brand-row">
-        <Mascot />
-        <div>
-          <div className="wordmark">
-            <span className="hood">Hood</span>
-            <span className="agent">Agent</span>
-            <span className="ai">Ai</span>
-          </div>
-          <div className="tagline">
-            Your <b>AI</b>. Your <b>Edge</b>.
-          </div>
-        </div>
-      </div>
+      <Mascot />
+      <Wordmark />
     </header>
   );
 }

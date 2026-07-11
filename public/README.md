@@ -1,15 +1,12 @@
 # Logos de HoodAgentAi
 
-Coloca aquí tus imágenes de marca para que la página use los logos reales:
+Imágenes de marca usadas por la web:
 
-- **`mascot.png`** → el personaje encapuchado neón (el que aparece en el hexágono).
-  Se muestra en la cabecera de la web. Recomendado: cuadrado, ~512×512 px.
+- **`mascot.png`** → el personaje encapuchado neón (avatar de la cabecera).
+- **`wordmark.jpg`** → el logo "HoodAgent — Your AI. Your Edge.".
+- **`favicon.svg`** → ícono de la pestaña del navegador.
 
-- (Opcional) El texto **HoodAgent** ya está recreado con CSS neón en la web,
-  así que no necesitas subir la imagen del wordmark. Si prefieres usar tu PNG,
-  reemplaza el bloque `<div className="wordmark">` en `app/page.tsx` por
-  `<img src="/wordmark.png" className="wordmark-img" alt="HoodAgent" />` y
-  sube tu archivo como `wordmark.png`.
-
-Si `mascot.png` no existe, la web muestra un hexágono neón de reemplazo
-automáticamente (no se rompe nada).
+Si `mascot.png` o `wordmark.jpg` faltaran, la web muestra automáticamente un
+reemplazo (hexágono neón para la mascota y el wordmark recreado en CSS), así
+que la página nunca se rompe. Para cambiar los logos, solo reemplaza estos
+archivos manteniendo el mismo nombre.

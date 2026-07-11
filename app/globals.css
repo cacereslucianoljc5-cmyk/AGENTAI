@@ -69,18 +69,18 @@ a {
 }
 
 .mascot {
-  width: 88px;
-  height: 88px;
-  border-radius: 20px;
+  width: 128px;
+  height: 128px;
+  border-radius: 24px;
   object-fit: cover;
   box-shadow: var(--glow);
   border: 1px solid var(--border);
 }
 
 .mascot-fallback {
-  width: 88px;
-  height: 88px;
-  border-radius: 20px;
+  width: 128px;
+  height: 128px;
+  border-radius: 24px;
   display: grid;
   place-items: center;
   background: var(--panel);
@@ -120,8 +120,9 @@ a {
 }
 
 .wordmark-img {
-  max-width: min(420px, 82vw);
+  max-width: min(480px, 88vw);
   height: auto;
+  border-radius: 8px;
 }
 
 /* ---------- Tabs ---------- */
