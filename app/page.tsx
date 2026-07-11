@@ -14,7 +14,7 @@ const IMAGE_LIMIT = 20;
 // When the project is connected to Git on Vercel, these can be swapped back to
 // local paths ("/mascot.png", etc.).
 const CDN =
-  "https://cdn.jsdelivr.net/gh/cacereslucianoljc5-cmyk/AGENTAI@7623a38b363ed108a4047f4fe553aaba5aa80d13/public";
+  "https://cdn.jsdelivr.net/gh/cacereslucianoljc5-cmyk/AGENTAI@a078becc6e8bf00d8a02c59a7463afce49edbe99/public";
 
 function todayKey() {
   return new Date().toISOString().slice(0, 10);
@@ -77,28 +77,27 @@ function Mascot() {
 
 function Wordmark() {
   const [broken, setBroken] = useState(false);
-  if (broken) {
-    return (
-      <div>
+  return (
+    <div className="wordmark-wrap">
+      {broken ? (
         <div className="wordmark">
           <span className="hood">Hood</span>
           <span className="agent">Agent</span>
           <span className="ai">Ai</span>
         </div>
-        <div className="tagline">
-          Your <b>AI</b>. Your <b>Edge</b>.
-        </div>
+      ) : (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          className="wordmark-img"
+          src={`${CDN}/wordmark.jpg`}
+          alt="HoodAgent"
+          onError={() => setBroken(true)}
+        />
+      )}
+      <div className="tagline">
+        Your <b>AI</b>. Your <b>Edge</b>.
       </div>
-    );
-  }
-  return (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img
-      className="wordmark-img"
-      src={`${CDN}/wordmark.jpg`}
-      alt="HoodAgent — Your AI. Your Edge."
-      onError={() => setBroken(true)}
-    />
+    </div>
   );
 }
 
@@ -349,7 +348,7 @@ export default function Page() {
       </div>
       {tab === "chat" ? <ChatTab /> : <ImageTab />}
       <div className="footer">
-        HoodAgentAi · IA gratuita con límites diarios · Hecho con ⚡ neón
+        HoodAgentAi · IA gratuita con límites diarios
         <br />
         Uso responsable — no generes contenido dañino o ilegal.
       </div>

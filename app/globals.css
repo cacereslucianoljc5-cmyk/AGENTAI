@@ -119,8 +119,14 @@ a {
   font-weight: 700;
 }
 
+.wordmark-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
 .wordmark-img {
-  max-width: min(480px, 88vw);
+  max-width: min(460px, 86vw);
   height: auto;
   border-radius: 8px;
 }
