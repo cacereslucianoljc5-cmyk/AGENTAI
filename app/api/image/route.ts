@@ -12,7 +12,7 @@ export async function POST(req: Request) {
   if (!rate.allowed) {
     return NextResponse.json(
       {
-        error: `Has alcanzado el límite diario de ${LIMITS.image} imágenes. Vuelve mañana 🌙`,
+        error: `Has alcanzado el límite diario de ${LIMITS.image} imágenes. Vuelve mañana.`,
         remaining: 0,
         limit: LIMITS.image,
       },

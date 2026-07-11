@@ -17,7 +17,7 @@ export async function POST(req: Request) {
   if (!rate.allowed) {
     return NextResponse.json(
       {
-        error: `Has alcanzado el límite diario de ${LIMITS.chat} mensajes. Vuelve mañana 🌙`,
+        error: `Has alcanzado el límite diario de ${LIMITS.chat} mensajes. Vuelve mañana.`,
         remaining: 0,
         limit: LIMITS.chat,
       },

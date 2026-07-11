@@ -16,6 +16,65 @@ const IMAGE_LIMIT = 20;
 const CDN =
   "https://cdn.jsdelivr.net/gh/cacereslucianoljc5-cmyk/AGENTAI@a078becc6e8bf00d8a02c59a7463afce49edbe99/public";
 
+// ---------- Inline SVG icons (inherit color via currentColor) ----------
+function IconChat({ size = 18 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+    </svg>
+  );
+}
+
+function IconImage({ size = 18 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      <rect x="3" y="3" width="18" height="18" rx="2" />
+      <circle cx="8.5" cy="8.5" r="1.5" />
+      <path d="M21 15l-5-5L5 21" />
+    </svg>
+  );
+}
+
+function IconDownload({ size = 16 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+      <path d="M7 10l5 5 5-5" />
+      <path d="M12 15V3" />
+    </svg>
+  );
+}
+
 function todayKey() {
   return new Date().toISOString().slice(0, 10);
 }
@@ -126,7 +185,7 @@ function ChatTab() {
     const text = input.trim();
     if (!text || loading) return;
     if (counter.remaining <= 0) {
-      setError("Has alcanzado tu límite diario de mensajes. Vuelve mañana 🌙");
+      setError("Has alcanzado tu límite diario de mensajes. Vuelve mañana.");
       return;
     }
     setError("");
@@ -164,7 +223,7 @@ function ChatTab() {
   return (
     <div className="panel">
       <div className="limit-pill">
-        💬 Mensajes hoy: <b>{counter.remaining}</b> / {CHAT_LIMIT} restantes
+        <IconChat size={15} /> Mensajes hoy: <b>{counter.remaining}</b> / {CHAT_LIMIT} restantes
       </div>
       <div className="chat-log" ref={logRef}>
         {messages.length === 0 && !loading && (
@@ -223,7 +282,7 @@ function ImageTab() {
     const text = prompt.trim();
     if (!text || loading) return;
     if (counter.remaining <= 0) {
-      setError("Has alcanzado tu límite diario de imágenes. Vuelve mañana 🌙");
+      setError("Has alcanzado tu límite diario de imágenes. Vuelve mañana.");
       return;
     }
     setError("");
@@ -268,7 +327,7 @@ function ImageTab() {
   return (
     <div className="panel">
       <div className="limit-pill">
-        🎨 Imágenes hoy: <b>{counter.remaining}</b> / {IMAGE_LIMIT} restantes
+        <IconImage size={15} /> Imágenes hoy: <b>{counter.remaining}</b> / {IMAGE_LIMIT} restantes
       </div>
       <input
         type="text"
@@ -314,13 +373,13 @@ function ImageTab() {
           <img src={imgUrl} alt={prompt} />
         ) : (
           <div className="stage-hint">
-            Describe una imagen y pulsa <b>Generar</b> ✨
+            Describe una imagen y pulsa <b>Generar</b>
           </div>
         )}
       </div>
       {imgUrl && !loading && (
         <a className="download" href={imgUrl} target="_blank" rel="noreferrer" download>
-          ⬇️ Abrir / descargar imagen
+          <IconDownload size={15} /> Abrir / descargar imagen
         </a>
       )}
     </div>
@@ -337,13 +396,13 @@ export default function Page() {
           className={`tab ${tab === "chat" ? "active" : ""}`}
           onClick={() => setTab("chat")}
         >
-          💬 Chat
+          <IconChat size={17} /> Chat
         </button>
         <button
           className={`tab ${tab === "image" ? "active" : ""}`}
           onClick={() => setTab("image")}
         >
-          🎨 Imágenes
+          <IconImage size={17} /> Imágenes
         </button>
       </div>
       {tab === "chat" ? <ChatTab /> : <ImageTab />}
